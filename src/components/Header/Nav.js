@@ -1,14 +1,14 @@
 import React from 'react';
+import s from './Nav.module.css';
 
 const Nav = () => {
-    const isHeader = true;
     return (
-        <nav>
-            <h2 /* style={{ backgroundColor: 'red' }} */>CDA</h2>
-            <ul className={isHeader ? '' : ''}>
-                <li>{isHeader ? 'Remeras' : 'Instagram'}</li>
+        <nav className={s.nav}>
+            <h2>CDA</h2>
+            <ul>
+                <li>Remeras</li>
                 <li>Camisas</li>
-                <li style={{ color: isHeader ? 'red' : 'green' }}>Gorras</li>
+                <li>Gorras</li>
             </ul>
 
             {/* <img src={logo} alt="logo" /> */}
