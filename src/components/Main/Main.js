@@ -1,16 +1,19 @@
 import React from 'react';
-import styles from './Main.module.css';
+import { Routes,Route } from 'react-router-dom'
+import CardContainer from '../Cards/CardContainer';
+import Cart from './Cart';
+import DetailContainer from './DetailContainer';
 
-const Main = ({ saludo }) => {
-    //console.log(props);
-    //console.log(props.saludo);
-    //const saludo = props.saludo;
-    //const { saludo } = props;
+const Main = () => {
 
     return (
-        <div className={styles.main}>
-            <h2>Main</h2>
-            <p>{saludo}</p>
+        <div >
+            <Routes>
+                <Route path="/" element={<CardContainer/>} />
+                <Route path="/cart" element={<Cart/>} />
+                <Route path="/detail/:id" element={<DetailContainer />} />
+                <Route path="/category/:categoria" element={<CardContainer />} />
+            </Routes>
         </div>
     );
 };

@@ -1,0 +1,31 @@
+.boton{
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 10%;
+    height: 50px;
+}
+
+.box{
+    position: relative;
+    left: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items:  center ;
+    border: 5px solid grey;
+    background-color: darkcyan;
+    height: 150px;
+    width: 20%;
+    
+  }
+#agregar {
+    position: absolute;
+    margin-top: 35%;
+    left: 85px;
+    background-color: brown;
+    font-size: 20px;
+    text-align: center;
+    border:2px solid blue;
+    width:40%;
+    height:25%;
+}
