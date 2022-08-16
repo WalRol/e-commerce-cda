@@ -2,7 +2,7 @@ import {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import estilo from './Form.module.css'
 const URL = 'https://fake-products-eric.herokuapp.com/api/orders'
-const Form = ({cart,total,handleId,deleteAll}) => {
+const Form = ({cart,total,deleteAll}) => {
     const [dataform, setDataform] = useState({user:'', phone:''})
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();

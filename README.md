@@ -2,10 +2,12 @@
 
 ![](public/screen.png)
 
-Demo del proyecto
+[Demo del proyecto](https://ecommerce-cda.netlify.app/)
 
 ## Librerias utilizadas
 - React-router-dom
+- React-spinners
+- Sweetalert2
 
 ## Levantar el proyecto
 
