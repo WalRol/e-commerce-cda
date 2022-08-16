@@ -1,21 +1,19 @@
-import React, {useState,useEffect} from 'react'
+import React from 'react'
 import {useParams} from 'react-router-dom'
+import useFetch from '../customHooks/useFetch';
 import CardDetail from './CardDetail';
 import style from './CardDetail.module.css'
 
 const DetailContainer = () => {
-    const [item, setItem] = useState({})
     const {id} = useParams();
-    const URL = 'https://fake-products-eric.herokuapp.com/api/products/detail'
-    useEffect(()=>{
-        fetch(`${URL}/${id}`)
-        .then ( (res) => res.json())
-        .then ((res) => setItem(res));
-    },[id])
-    //console.log(item);
+    // eslint-disable-next-line
+    const {data, loading, error} = useFetch(`detail/${id}`)
+    if (loading) {
+      return <h1>Cargando...</h1>;
+  }
   return (
     <div className={style.detailContainer} >
-        <CardDetail item= {item}/>
+        {data ? <CardDetail item= {data}/> : <h1>Cargando...</h1>}
     </div>
   )
 }

@@ -1,0 +1,17 @@
+.checkoutContainer {
+    min-height: 40vh;
+    padding: 20px;
+    margin: 30px;
+    background-color: rgb(202, 218, 232);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 33px;
+}
+.checkoutContainer h3 {
+    text-align: center;
+}
+.checkoutContainer h4 {
+    text-align: center;
+}

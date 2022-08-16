@@ -1,38 +1,66 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import CardList from './CardList';
 import {useParams} from 'react-router-dom'
+import BeatLoader from "react-spinners/BeatLoader";
+import useFetch from '../customHooks/useFetch';
+import Search from '../Main/Search';
+import { useState } from 'react';
 
 const CardContainer = () => {
-    const [items, setItems] = useState([])
-    const {categoria} = useParams();
-    console.log(categoria);
-      useEffect(() => {
-        if (categoria) {
-          fetch(`https://fake-products-eric.herokuapp.com/api/products/category/${categoria}`)
-            .then ( (res) => res.json())
-            .then ((res) => setItems(res))
-        } else{
-           fetch('https://fake-products-eric.herokuapp.com/api/products')
-             .then ( (res) => res.json())
-             .then ((res) => setItems(res))
-        }
+  const [query, setQuery] = useState('')
+  const {categoria} = useParams();
 
-      }, [categoria]);
+  const endpoint = categoria ? `category/${categoria}` : '';
+    // eslint-disable-next-line
+  const {data, loading, error} = useFetch(endpoint)
+
+  const handleQuery = (params) => {
+      setQuery(params);
+    };
 
   return (
     <div
        style={{
-           display:'flex',
-           justifyContent:'center',
-           flexDirection: 'column',
-           alignItems: 'center'
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        minHeight: '85vh',
+        margin: '30px',
        }}
     >
-        <h2>Articulos</h2>
-        <CardList items={items} />
+      {data && (
+          <>
+          {loading ? (
+                <h1><BeatLoader/></h1>
+            ) : (
+                <>
+                    {categoria ? (
+                        <h2>
+                            Conocé nuestras {categoria.toLocaleLowerCase()}
+                        </h2>
+                    ) : (
+                        <>
+                        <h2>Ecommerce CDA</h2>
+                        <Search handleQuery={handleQuery} />
+                        </>
+                    )}
+                    
+
+                    <CardList
+                    query={query} 
+                    items={data}
+                    categoria={categoria} />
+                </>
+            )}
+          </>
+
+      )}
+       
+        
     </div>
   )
   
 }
 
 export default CardContainer
+
